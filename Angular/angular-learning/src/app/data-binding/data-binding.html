@@ -1,0 +1,34 @@
+<p>data-binding works!</p>
+
+<span class="primary-color">{{sudeep}}</span>
+
+{{age}}
+
+{{isLoggedIn}}
+
+<p>{{sudeep}} is {{age}} years old and is logged in: {{isLoggedIn}}.</p>
+
+<p>Roll Number: {{rollnumber}}</p>
+<p>Course: {{course}}</p>
+
+<input type="text" [value]="sudeep">
+
+<input type="checkbox" [(ngModel)]="isLoggedIn">
+{{isLoggedIn}}
+
+<input type="text" [(ngModel)]="maritalstatus">
+{{maritalstatus}}
+
+<p [class]="demotextcolor">demo text</p>
+
+<br>
+<hr>
+<button (click)="handleclick()">submit</button>
+
+<br>
+<hr>
+<select name="course" id="course" [(ngModel)]="course">
+  <option value="Angular">Angular</option>
+  <option value="React">React</option>
+  <option value="Vue">Vue</option>
+</select>

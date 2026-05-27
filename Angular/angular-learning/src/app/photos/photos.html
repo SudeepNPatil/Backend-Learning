@@ -1,0 +1,82 @@
+<div class="row">
+    <div class="col-7">
+        <div class="card">
+            <div class="card-header bg-warning" >
+                Photos List
+            </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Sr No.</th>
+                        <th>Title</th>
+                        <th>Image</th>
+                        <th>Thumbnail </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(photo of photolist(); track $index){
+                    <tr>
+                        <td>{{$index + 1}}</td>
+                        <td>{{photo.title}}</td>
+                        <td><img [src]="photo.url" [alt]="photo.title" class="img-thumbnail" style="width: 100px; height: 100px;"></td>
+                        <td><img [src]="photo.thumbnailUrl" [alt]="photo.title" class="img-thumbnail" style="width: 100px; height: 100px;"></td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-primary" (click)="editphotos(photo)">Edit</button>
+                            <button type="button" class="btn btn-sm btn-danger" (click)="deletephotos(photo.id)">Delete</button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card">
+            <div class="card-header bg-warning" >
+                Photos List
+            </div>
+        <div class="card-body">
+            <form>
+                <div class="row">
+                    <div class="col-6">
+                        <label>Album Id</label>
+                        <input type="text" name="albumId" [(ngModel)]="newphotos.albumId" class="form-control" placeholder="Enter album id">
+                    </div>
+                    <div class="col-6">
+                        <label>Title</label>
+                            <input type="text" name="title" [(ngModel)]="newphotos.title" class="form-control" placeholder="Enter title">
+                        </div>
+                    <div class="col-6">
+                        <label>Url</label>
+                        <input type="text" name="url" [(ngModel)]="newphotos.url" class="form-control" placeholder="Enter url">
+                    </div>
+                    <div class="col-6">
+                        <label>Thumbnail Url</label>
+                        <input type="text" name="thumbnailUrl" [(ngModel)]="newphotos.thumbnailUrl" class="form-control" placeholder="Enter thumbnail url">
+                    </div>
+                </div>
+
+                <div class="row pt-2">
+                    @if(isEditMode){
+                     <div class="col-6">
+                        <button type="button" class="btn btn-primary mt-3 text-center" (click)="updatephotos()">Update</button>
+                    </div>
+                    }
+                    @else{
+                    <div class="col-6">
+                        <button type="button" class="btn btn-primary mt-3 text-center" (click)="submitphotos()">Submit</button>
+                    </div>
+                    }
+                    <div class="col-6">
+                        <button type="button" class="btn btn-secondary mt-3 text-center">Cancel</button>
+                    </div>
+                </div>
+            </form>
+         </div>
+        </div>
+    </div>
+</div>
